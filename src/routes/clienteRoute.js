@@ -45,7 +45,20 @@ router.post('/clientes', (req, res)=>{
         });
     }
 
-})
+});
+
+router.get('/clientes/:clienteId', (req, res)=>{
+    clienteId = req.params.clienteId;
+    cliente.getIdUser(clienteId, (err, data) =>{
+        if(data != null){
+            res.status(200).json(data);
+        }else{
+            res.status(404).json({
+                code: 'No se encuentre cliente'
+            });
+        }
+    } );
+});
 
 function calcularEdad(fecha) {
     var hoy = new Date();
@@ -58,6 +71,6 @@ function calcularEdad(fecha) {
     }
 
     return edad;
-}
+};
 
 module.exports = router;
