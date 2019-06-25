@@ -1,5 +1,6 @@
 const express = require ('express');
 const app = express();
+const cors = require('cors')
 
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
@@ -11,10 +12,14 @@ app.set('port', process.env.PORT || 3000);
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 
+//cors
+app.use(cors())
 
 //routes
 const clienteRoute = require('./routes/clienteRoute');
 app.use(clienteRoute);
+
+
 
 app.listen(app.get('port'), () => {
     console.log(`Server on port ${app.get('port')}`);
