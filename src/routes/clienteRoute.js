@@ -60,6 +60,19 @@ router.get('/clientes/:clienteId', (req, res)=>{
     } );
 });
 
+router.post('/clientes/login', (req, res)=>{
+    const cc = req.body.cc;
+    cliente.getIdUser(cc, (err, data) =>{
+        if(data != null){
+            res.status(200).json(data);
+        }else{
+            res.status(404).json({
+                code: 'No se encuentre cliente'
+            });
+        }
+    });
+});
+
 function calcularEdad(fecha) {
     var hoy = new Date();
     var cumpleanos = new Date(fecha);
