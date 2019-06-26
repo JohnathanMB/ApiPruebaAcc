@@ -3,6 +3,7 @@ const router = express.Router();
 
 router.post('/consulta', (req, res) =>{
     const fecha_inicio = req.body.fecha_inicio;
+    var consulta;
     if(mayorAnioYMedio(fecha_inicio)){
         
         const salario = req.body.salario;
@@ -25,21 +26,19 @@ router.post('/consulta', (req, res) =>{
                 mensaje: "Credito aprobado de $5.000.000"
             });
         }else{
-            res.status(400).json({
+            res.status(200).json({
                 aprobado: false,
                 credito: "0",
                 mensaje: "Su credito no es aprobado\nSu salario debe ser mayor a $8.000.000"
             });
         }
     }else{
-        console.log("fecha inicio no valida");
-        res.status(400).json({
+        res.status(200).json({
             aprobado: false,
             credito: "0",
             mensaje: "Su credito no es aprobado\nDebe tener mas de un anio y medio de antiguedad en la empresa"
         });
     }
-
 
 } );
 
