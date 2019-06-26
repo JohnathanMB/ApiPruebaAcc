@@ -18,6 +18,8 @@ app.use(cors())
 //routes
 const clienteRoute = require('./routes/clienteRoute');
 app.use(clienteRoute);
+const consultaRoute = require('./routes/consultaRoute');
+app.use(consultaRoute);
 
 
 
