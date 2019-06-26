@@ -19,7 +19,7 @@ router.post('/clientes', (req, res)=>{
 
     if(calcularEdad(clienteData.fecha_nacimiento) >= 18){
         cliente.insertCliente(clienteData, (err, data)=>{
-
+        
             if(data && data.insertDone){
                 res.status(200).json({
                     succes: true,
@@ -34,6 +34,7 @@ router.post('/clientes', (req, res)=>{
                 });
                 //throw err;
             }
+            
         })
     }else{
         res.status(400).json({

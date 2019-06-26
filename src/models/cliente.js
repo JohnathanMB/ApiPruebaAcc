@@ -36,7 +36,8 @@ clienteModel.insertCliente = (clienteData, callback) => {
                     });
                 }else{
                     callback(null, {
-                        'insertDone': true
+                        'insertDone': true,
+                        'cc': clienteData.cc
                     });
                 }
             }
