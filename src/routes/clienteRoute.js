@@ -25,7 +25,7 @@ router.post('/clientes', (req, res)=>{
                     succes: true,
                     msg: 'Cliente Ingresado',
                     data: data
-                })
+                });
             }else{
                 res.status(500).json({
                     succes: false,

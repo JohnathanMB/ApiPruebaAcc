@@ -4,19 +4,40 @@ const router = express.Router();
 router.post('/consulta', (req, res) =>{
     const fecha_inicio = req.body.fecha_inicio;
     if(mayorAnioYMedio(fecha_inicio)){
-        console.log("Si es hace mas de un anio y medio");
+        
         const salario = req.body.salario;
         if(salario > 4000000){
-            console.log("Salario superior a 4000000");
+            res.status(200).json({
+                aprobado: true,
+                credito: "50000000",
+                mensaje: "Credito aprobado de $50.000.000"
+            });
         }else if(salario > 1000000){
-            console.log("Salario superior a 1000000");
+            res.status(200).json({
+                aprobado: true,
+                credito: "20000000",
+                mensaje: "Credito aprobado de $20.000.000"
+            });
         }else if(salario > 800000){
-            console.log("Salario superior a 800000");
+            res.status(200).json({
+                aprobado: true,
+                credito: "5000000",
+                mensaje: "Credito aprobado de $5.000.000"
+            });
         }else{
-            console.log("Salario inferior a 800000");
+            res.status(400).json({
+                aprobado: false,
+                credito: "0",
+                mensaje: "Su credito no es aprobado\nSu salario debe ser mayor a $8.000.000"
+            });
         }
     }else{
         console.log("fecha inicio no valida");
+        res.status(400).json({
+            aprobado: false,
+            credito: "0",
+            mensaje: "Su credito no es aprobado\nDebe tener mas de un anio y medio de antiguedad en la empresa"
+        });
     }
 
 
